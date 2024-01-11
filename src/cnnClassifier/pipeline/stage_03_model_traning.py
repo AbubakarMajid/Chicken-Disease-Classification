@@ -1,9 +1,7 @@
-from cnnClassifier.config.configuration import ConfigurationManager
-from cnnClassifier.components.prepare_callbacks import PrepareCallback
-from cnnClassifier.components.training import Training
+from cnnClassifier.config.configuration import configurationnManager
+from cnnClassifier.components.callbacks import PrepareCallback
+from cnnClassifier.components.model_training import Training
 from cnnClassifier import logger
-
-
 
 STAGE_NAME = "Training"
 
@@ -13,7 +11,7 @@ class ModelTrainingPipeline:
         pass
 
     def main(self):
-        config = ConfigurationManager()
+        config = configurationnManager()
         prepare_callbacks_config = config.get_prepare_callback_config()
         prepare_callbacks = PrepareCallback(config=prepare_callbacks_config)
         callback_list = prepare_callbacks.get_tb_ckpt_callbacks()
